@@ -3513,7 +3513,8 @@ class DefaultShuffleOrder extends ShuffleOrder {
     // Insert new indices at random positions after currentIndex.
     final newIndices = List.generate(count, (i) => index + i);
     for (var newIndex in newIndices) {
-      final insertionIndex = _random.nextInt(indices.length + 1);
+      final randomSecure = Random.secure();
+      final insertionIndex = randomSecure.nextInt(indices.length + 1);
       indices.insert(insertionIndex, newIndex);
     }
   }
